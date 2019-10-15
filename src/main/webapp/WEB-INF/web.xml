@@ -15,7 +15,7 @@
 
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
-		<param-value>/WEB-INF/spring-context-owen.xml</param-value>
+		<param-value>classpath:spring-context-owen.xml</param-value>
 	</context-param>
 
 	<!-- <listener>

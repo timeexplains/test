@@ -36,6 +36,7 @@ public class UserAction extends Action{
 		
 		response.setHeader("Content-Type", "application/json");
 		response.getWriter().println("{a:"+s2.add(2, 3)+"}");
+		response.getWriter().println(s2.test());
 		
 		response.getWriter().println("<htm><body><div style='color:red'>this is a web application.</div.</body></html>");
 		

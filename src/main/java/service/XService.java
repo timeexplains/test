@@ -2,8 +2,9 @@ package service;
 
 public class XService {
 
-	public void test() {
+	public String test() {
 		System.out.println("xService.test");
+		return "test";
 	}
 	
 	public int add(int a,int b) {

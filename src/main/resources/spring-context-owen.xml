@@ -18,4 +18,6 @@
                      pointcut-ref="goodsWarnPointcut" /> 
     </aop:config>
     
+    <bean id="springContextHolder" class="context.SpringContextHolder" lazy-init="false"/>
+    
 </beans>

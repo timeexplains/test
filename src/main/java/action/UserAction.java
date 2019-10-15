@@ -10,8 +10,8 @@ import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
-
-import com.alibaba.fastjson.JSONObject;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
 import context.SpringContextHolder;
 import service.XService;
@@ -19,10 +19,13 @@ import service.XService;
 public class UserAction extends Action{
 	@Resource
 	XService xService;
+	Log logger = LogFactory.getLog(UserAction.class);
 	
 	@Override
 	public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
+
+		logger.debug("enter 1:");
 		
 		System.out.println(mapping);
 		System.out.println(form);
@@ -39,6 +42,9 @@ public class UserAction extends Action{
 		response.getWriter().println(s2.test());
 		
 		response.getWriter().println("<htm><body><div style='color:red'>this is a web application.</div.</body></html>");
+		
+		logger.debug("finished!");
+		
 		
 		return null;
 	}

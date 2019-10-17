@@ -6,13 +6,14 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 
+import Bean.Human;
 import context.SpringContextHolder;
 import service.XService;
 
@@ -37,9 +38,15 @@ public class UserAction extends Action{
 		
 		System.out.println(s2.sub(2, 1));
 		
+//		logger.debug((Human)SpringContextHolder.getBean("human"));
+		
+		logger.debug(new Human());
+		
 		response.setHeader("Content-Type", "application/json");
 		response.getWriter().println("{a:"+s2.add(2, 3)+"}");
 		response.getWriter().println(s2.test());
+		
+		Thread.sleep(30000);
 		
 		response.getWriter().println("<htm><body><div style='color:red'>this is a web application.</div.</body></html>");
 		

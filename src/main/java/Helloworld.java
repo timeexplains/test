@@ -1,6 +1,7 @@
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import op.test;
 import service.XService;
 
 public class Helloworld {
@@ -12,6 +13,7 @@ public class Helloworld {
 		 
 		 XService service =  (XService) ctx.getBean("xService");
 		 service.test();
+		 
 		 
 	}
 

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aspectj>
+	<aspects>
+		<concrete-aspect name="_access_Aspect"
+			extends="aop.BAspect">
+			<pointcut name="access"
+				expression="execution(* service.XService.add(..))" />
+		</concrete-aspect>
+		
+		<concrete-aspect name="_before_test"
+			extends="aop.CAspect">
+			<pointcut name="beforetest"
+				expression="execution(* service.XService.test(..))" />
+		</concrete-aspect>
+	</aspects>
+
+</aspectj>

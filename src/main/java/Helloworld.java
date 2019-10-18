@@ -1,7 +1,6 @@
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import op.test;
 import service.XService;
 
 public class Helloworld {

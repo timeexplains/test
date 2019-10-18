@@ -7,7 +7,7 @@ import org.springframework.web.context.ContextLoaderListener;
 import com.ctrip.framework.apollo.Config;
 import com.ctrip.framework.apollo.ConfigService;
 
-import Bean.BeansManager;
+import bean.BeansManager;
 
 public class Listen0 extends ContextLoaderListener  {
 	@Override

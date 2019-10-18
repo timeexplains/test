@@ -13,7 +13,7 @@ import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
-import Bean.Human;
+import bean.Human;
 import context.SpringContextHolder;
 import service.XService;
 
@@ -36,6 +36,8 @@ public class UserAction extends Action{
 
 		XService s2 = (XService) SpringContextHolder.getBean("xService");
 		
+		s2.test();
+		
 		System.out.println(s2.sub(2, 1));
 		
 //		logger.debug((Human)SpringContextHolder.getBean("human"));
@@ -43,10 +45,10 @@ public class UserAction extends Action{
 		logger.debug(new Human());
 		
 		response.setHeader("Content-Type", "application/json");
-		response.getWriter().println("{a:"+s2.add(2, 3)+"}");
-		response.getWriter().println(s2.test());
 		
-		Thread.sleep(30000);
+		System.out.println(s2.add(3, 4));
+		
+//		Thread.sleep(30000);
 		
 		response.getWriter().println("<htm><body><div style='color:red'>this is a web application.</div.</body></html>");
 		

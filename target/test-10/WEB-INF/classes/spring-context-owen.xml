@@ -1,21 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?><!-- XML Schema-style -->
 <beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:aop="http://www.springframework.org/schema/aop"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
-                           http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd"
-       default-lazy-init="true">
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:apollo="http://www.ctrip.com/schema/apollo"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+                           http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd
+                           http://www.ctrip.com/schema/apollo http://www.ctrip.com/schema/apollo.xsd"
+	default-lazy-init="true">
+
+	<!-- <apollo:config/> <bean class="com.ctrip.framework.apollo.spring.TestXmlBean"> 
+		<property name="timeout" value="${timeout:100}" /> <property name="batch" 
+		value="${batch:200}" /> </bean> -->
+
+<context:component-scan base-package="bean"></context:component-scan>
 
 	<bean id="xService" class="service.XService"></bean>
-    <bean id="goodsWarnAspect" class="aop.XAspect"></bean>
-    
+	<bean id="goodsWarnAspect" class="aop.XAspect"></bean>
+	<bean id="human" class="Bean.Human"></bean>
 
-    <aop:config proxy-target-class="true">
-    
-        <aop:pointcut id="goodsWarnPointcut" expression="execution(* service.XService.test(..))"/>
-        
-        <aop:advisor advice-ref="goodsWarnAspect"
-                     pointcut-ref="goodsWarnPointcut" /> 
-    </aop:config>
-    
+	<aop:config proxy-target-class="true">
+
+		<aop:pointcut id="goodsWarnPointcut"
+			expression="execution(* service.XService.test(..))" />
+
+		<aop:advisor advice-ref="goodsWarnAspect"
+			pointcut-ref="goodsWarnPointcut" />
+	</aop:config>
+
+	<bean id="springContextHolder" class="context.SpringContextHolder"
+		lazy-init="false" />
+
+
 </beans>

@@ -4,6 +4,8 @@
 <struts-config>
 	<action-mappings>
 		<action path="/user"	type="action.UserAction"></action>
+		<action path="/export"	type="action.ExportAction"></action>
+		<action path="/export2"	type="action.ExportAction2"></action>
 	</action-mappings>
 	
 </struts-config>

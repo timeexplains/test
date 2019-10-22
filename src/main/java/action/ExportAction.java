@@ -13,59 +13,40 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.streaming.SXSSFWorkbook;
 import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
-import bean.Human;
-import context.SpringContextHolder;
 import service.XService;
 
-public class UserAction extends Action{
+public class ExportAction extends Action{
 	@Resource
 	XService xService;
-	Log logger = LogFactory.getLog(UserAction.class);
+	Log logger = LogFactory.getLog(ExportAction.class);
 	
 	@Override
 	public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
-
-		logger.debug("enter 1:");
+		SXSSFWorkbook workbook = new SXSSFWorkbook();
+		Sheet sheet = workbook.createSheet();
 		
-		System.out.println(mapping);
-		System.out.println(form);
-		System.out.println(request);
-		System.out.println(response);
-		
-
-		XService s2 = (XService) SpringContextHolder.getBean("xService");
-		
-		s2.test();
-		
-		System.out.println(s2.sub(2, 1));
-		
-//		logger.debug((Human)SpringContextHolder.getBean("human"));
-		
-		logger.debug(new Human());
+		for(int i=0;i<=1000000;i++) {
+			sheet.createRow(i).createCell(0).setCellValue("dfalfsajlfjsasakjflajflajflsajfalkjsaljfsaljfsaljf");
+		}
 		
 		
-		
-		System.out.println(s2.add(3, 4));
-		
-//		Thread.sleep(30000);
-		
-		OutputHtml(response);
-		
-		logger.debug("finished!");
+		downloadFile(response, "SXSSF_OPT", workbook);
 		
 		
 		return null;
 	}
 
 
-	public void downloadFile(HttpServletResponse response, String fileName,XSSFWorkbook workbook) throws IOException {
+	public void downloadFile(HttpServletResponse response, String fileName,Workbook workbook) throws IOException {
 		MessageFormat format = new MessageFormat(new String(fileName.getBytes("gb2312"),"iso8859-1")
 		+"_{0,date,yyyyMMddhhmm}.xlsx");
 		response.setContentType("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
@@ -82,10 +63,6 @@ public class UserAction extends Action{
 		os.close();
 	}
 	
-	private void OutputHtml(HttpServletResponse response) throws IOException {
-		response.setHeader("Content-Type", "application/json");
-		response.getWriter().println("<htm><body><div style='color:red'>this is a web application.</div.</body></html>");
-	}
 	
 	
 	@Override

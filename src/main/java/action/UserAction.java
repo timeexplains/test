@@ -19,7 +19,7 @@ import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
-import bean.Human;
+import app.Helloworld;
 import context.SpringContextHolder;
 import service.XService;
 
@@ -31,6 +31,11 @@ public class UserAction extends Action{
 	@Override
 	public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
+		
+		if( request.getParameter("method").equals("logtest")) {
+			Helloworld.main(null);
+			return null;
+		}
 
 		logger.debug("enter 1:");
 		
@@ -48,8 +53,7 @@ public class UserAction extends Action{
 		
 //		logger.debug((Human)SpringContextHolder.getBean("human"));
 		
-		logger.debug(new Human());
-		
+//		logger.debug(new Human());
 		
 		
 		System.out.println(s2.add(3, 4));

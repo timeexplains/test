@@ -44,8 +44,8 @@
 			<groupId>org.apache.ibatis</groupId>
 			<artifactId>ibatis-sqlmap</artifactId>
 			<version>2.3.4</version>
-			<scope>provided</scope>
-		</dependency>
+ 			<scope>provided</scope>
+ 		</dependency>
 		<!--redis.clients.jedis在web中也配置了,配置在api中主要是方便api做单元测试 -->
 		<dependency>
 			<groupId>redis.clients</groupId>
